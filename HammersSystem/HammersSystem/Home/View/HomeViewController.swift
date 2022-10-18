@@ -30,9 +30,7 @@ final class HomeViewController: UIViewController {
 
 // MARK: - HomeViewControllerProtocol
 
-extension HomeViewController: HomeViewControllerProtocol {
-	
-}
+extension HomeViewController: HomeViewControllerProtocol { }
 
 private extension HomeViewController {
 

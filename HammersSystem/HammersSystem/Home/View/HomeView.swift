@@ -26,9 +26,10 @@ final class HomeView: UIView {
 	init(interactor: HomeInteractorProtocol) {
 		self.interactor = interactor
 		super.init(frame: .zero)
-		tableView.dataSource = self
-		tableView.delegate = self
 		backgroundColor = Token.background.color
+		setupTable()
+		setupViews()
+		setupContraints()
 	}
 
 	required init?(coder: NSCoder) {
@@ -59,7 +60,22 @@ extension HomeView: UITableViewDataSource {
 	}
 
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		UITableViewCell()
+		let cell = tableView.dequeueReusableCell(withIdentifier: MenuCell.identifier, for: indexPath)
+		cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+		cell.selectionStyle = .none
+
+		guard let customCell = cell as? MenuCell else {
+			return UITableViewCell()
+		}
+
+		let model = self.data[indexPath.row]
+		customCell.configure(with: model)
+		return customCell
+	}
+
+	func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+		let headerView = HomeTableHeaderCell()
+		return headerView
 	}
 }
 
@@ -67,4 +83,30 @@ extension HomeView: UITableViewDataSource {
 
 extension HomeView: UITableViewDelegate {
 	
+}
+
+private extension HomeView {
+
+	func setupTable() {
+		tableView.register(MenuCell.self, forCellReuseIdentifier: MenuCell.identifier)
+		tableView.register(HomeTableHeaderCell.self, forHeaderFooterViewReuseIdentifier: HomeTableHeaderCell.identifier)
+		tableView.delegate = self
+		tableView.dataSource = self
+	}
+
+	func setupViews() {
+		[tableView].forEach {
+			addSubview($0)
+			$0.translatesAutoresizingMaskIntoConstraints = false
+		}
+	}
+
+	func setupContraints() {
+		NSLayoutConstraint.activate([
+			tableView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+			tableView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+			tableView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+			tableView.bottomAnchor.constraint(equalTo: bottomAnchor)
+		])
+	}
 }

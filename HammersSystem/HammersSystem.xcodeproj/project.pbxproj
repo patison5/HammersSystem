@@ -25,6 +25,9 @@
 		D61CCBEE28FEC67A0040CD90 /* MenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61CCBED28FEC67A0040CD90 /* MenuModel.swift */; };
 		D61CCBF128FEC7510040CD90 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61CCBF028FEC7510040CD90 /* Token.swift */; };
 		D61CCBF328FECA2F0040CD90 /* MenuEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61CCBF228FECA2F0040CD90 /* MenuEntity.swift */; };
+		D629D85B28FED8F30055F3D9 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D629D85A28FED8F30055F3D9 /* MenuCell.swift */; };
+		D629D85D28FED9030055F3D9 /* HomeTableHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D629D85C28FED9030055F3D9 /* HomeTableHeaderCell.swift */; };
+		D629D85F28FEF5240055F3D9 /* HeaderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D629D85E28FEF5240055F3D9 /* HeaderModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +51,9 @@
 		D61CCBED28FEC67A0040CD90 /* MenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuModel.swift; sourceTree = "<group>"; };
 		D61CCBF028FEC7510040CD90 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		D61CCBF228FECA2F0040CD90 /* MenuEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuEntity.swift; sourceTree = "<group>"; };
+		D629D85A28FED8F30055F3D9 /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
+		D629D85C28FED9030055F3D9 /* HomeTableHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableHeaderCell.swift; sourceTree = "<group>"; };
+		D629D85E28FEF5240055F3D9 /* HeaderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +117,7 @@
 		D61CCB9D28FEAC2D0040CD90 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D61CCBF728FED39B0040CD90 /* Cells */,
 				D61CCBA728FEADA20040CD90 /* HomeViewController.swift */,
 				D61CCBB728FEB8AC0040CD90 /* HomeViewControllerProtocol.swift */,
 				D61CCBA928FEAE460040CD90 /* HomeViewProtocol.swift */,
@@ -149,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				D61CCBED28FEC67A0040CD90 /* MenuModel.swift */,
+				D629D85E28FEF5240055F3D9 /* HeaderModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -174,6 +182,15 @@
 			children = (
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		D61CCBF728FED39B0040CD90 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				D629D85A28FED8F30055F3D9 /* MenuCell.swift */,
+				D629D85C28FED9030055F3D9 /* HomeTableHeaderCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -247,16 +264,19 @@
 			files = (
 				D61CCBF328FECA2F0040CD90 /* MenuEntity.swift in Sources */,
 				D61CCBAC28FEAE890040CD90 /* HomeInteractorProtocol.swift in Sources */,
+				D629D85B28FED8F30055F3D9 /* MenuCell.swift in Sources */,
 				D61CCBB228FEB4EC0040CD90 /* HomeInteractor.swift in Sources */,
 				D61CCBEE28FEC67A0040CD90 /* MenuModel.swift in Sources */,
 				D61CCBB828FEB8AC0040CD90 /* HomeViewControllerProtocol.swift in Sources */,
 				D61CCB8D28FEAA6F0040CD90 /* ViewController.swift in Sources */,
 				D61CCBB428FEB4F40040CD90 /* HomePresenter.swift in Sources */,
+				D629D85D28FED9030055F3D9 /* HomeTableHeaderCell.swift in Sources */,
 				D61CCBAE28FEAE960040CD90 /* HomePresenterProtocol.swift in Sources */,
 				D61CCBF128FEC7510040CD90 /* Token.swift in Sources */,
 				D61CCBB028FEAEC90040CD90 /* HomeRouterProtocol.swift in Sources */,
 				D61CCB8928FEAA6F0040CD90 /* AppDelegate.swift in Sources */,
 				D61CCBA428FEAD360040CD90 /* HomeAssembly.swift in Sources */,
+				D629D85F28FEF5240055F3D9 /* HeaderModel.swift in Sources */,
 				D61CCB8B28FEAA6F0040CD90 /* SceneDelegate.swift in Sources */,
 				D61CCBEA28FEC3D10040CD90 /* RootViewController.swift in Sources */,
 				D61CCBB628FEB8540040CD90 /* HomeView.swift in Sources */,
