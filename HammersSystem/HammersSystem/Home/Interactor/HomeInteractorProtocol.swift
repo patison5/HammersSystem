@@ -9,5 +9,7 @@ import Foundation
 
 /// Описание интерактор модуля
 protocol HomeInteractorProtocol: AnyObject {
-    
+
+	/// Получить данные с сервера
+	func fetch()
 }

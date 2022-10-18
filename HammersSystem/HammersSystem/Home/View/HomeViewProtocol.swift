@@ -9,5 +9,11 @@ import UIKit
 
 /// Описание вью контроллера модуля
 protocol HomeViewProtocol where Self: UIView {
-    
+
+	/// Получить данные с сервера
+	func fetch()
+
+	/// Обновить вью с новыми данными
+	/// - state: Полученные данные
+	func update(with state: [MenuModel])
 }

@@ -21,6 +21,10 @@
 		D61CCBB428FEB4F40040CD90 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61CCBB328FEB4F40040CD90 /* HomePresenter.swift */; };
 		D61CCBB628FEB8540040CD90 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61CCBB528FEB8540040CD90 /* HomeView.swift */; };
 		D61CCBB828FEB8AC0040CD90 /* HomeViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61CCBB728FEB8AC0040CD90 /* HomeViewControllerProtocol.swift */; };
+		D61CCBEA28FEC3D10040CD90 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61CCBE928FEC3D10040CD90 /* RootViewController.swift */; };
+		D61CCBEE28FEC67A0040CD90 /* MenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61CCBED28FEC67A0040CD90 /* MenuModel.swift */; };
+		D61CCBF128FEC7510040CD90 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61CCBF028FEC7510040CD90 /* Token.swift */; };
+		D61CCBF328FECA2F0040CD90 /* MenuEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61CCBF228FECA2F0040CD90 /* MenuEntity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +44,10 @@
 		D61CCBB328FEB4F40040CD90 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
 		D61CCBB528FEB8540040CD90 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		D61CCBB728FEB8AC0040CD90 /* HomeViewControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerProtocol.swift; sourceTree = "<group>"; };
+		D61CCBE928FEC3D10040CD90 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		D61CCBED28FEC67A0040CD90 /* MenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuModel.swift; sourceTree = "<group>"; };
+		D61CCBF028FEC7510040CD90 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
+		D61CCBF228FECA2F0040CD90 /* MenuEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuEntity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,7 +81,10 @@
 		D61CCB8728FEAA6F0040CD90 /* HammersSystem */ = {
 			isa = PBXGroup;
 			children = (
+				D61CCBF428FECCFE0040CD90 /* Extensions */,
+				D61CCBEF28FEC7480040CD90 /* DesignSystem */,
 				D61CCB9C28FEAC270040CD90 /* Home */,
+				D61CCBE928FEC3D10040CD90 /* RootViewController.swift */,
 				D61CCB8828FEAA6F0040CD90 /* AppDelegate.swift */,
 				D61CCB8A28FEAA6F0040CD90 /* SceneDelegate.swift */,
 				D61CCB8C28FEAA6F0040CD90 /* ViewController.swift */,
@@ -101,9 +112,9 @@
 			isa = PBXGroup;
 			children = (
 				D61CCBA728FEADA20040CD90 /* HomeViewController.swift */,
+				D61CCBB728FEB8AC0040CD90 /* HomeViewControllerProtocol.swift */,
 				D61CCBA928FEAE460040CD90 /* HomeViewProtocol.swift */,
 				D61CCBB528FEB8540040CD90 /* HomeView.swift */,
-				D61CCBB728FEB8AC0040CD90 /* HomeViewControllerProtocol.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -129,6 +140,7 @@
 		D61CCBA028FEAC730040CD90 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				D61CCBF228FECA2F0040CD90 /* MenuEntity.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -136,6 +148,7 @@
 		D61CCBA128FEAC780040CD90 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D61CCBED28FEC67A0040CD90 /* MenuModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -146,6 +159,21 @@
 				D61CCBAF28FEAEC90040CD90 /* HomeRouterProtocol.swift */,
 			);
 			path = Router;
+			sourceTree = "<group>";
+		};
+		D61CCBEF28FEC7480040CD90 /* DesignSystem */ = {
+			isa = PBXGroup;
+			children = (
+				D61CCBF028FEC7510040CD90 /* Token.swift */,
+			);
+			path = DesignSystem;
+			sourceTree = "<group>";
+		};
+		D61CCBF428FECCFE0040CD90 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -217,16 +245,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D61CCBF328FECA2F0040CD90 /* MenuEntity.swift in Sources */,
 				D61CCBAC28FEAE890040CD90 /* HomeInteractorProtocol.swift in Sources */,
 				D61CCBB228FEB4EC0040CD90 /* HomeInteractor.swift in Sources */,
+				D61CCBEE28FEC67A0040CD90 /* MenuModel.swift in Sources */,
 				D61CCBB828FEB8AC0040CD90 /* HomeViewControllerProtocol.swift in Sources */,
 				D61CCB8D28FEAA6F0040CD90 /* ViewController.swift in Sources */,
 				D61CCBB428FEB4F40040CD90 /* HomePresenter.swift in Sources */,
 				D61CCBAE28FEAE960040CD90 /* HomePresenterProtocol.swift in Sources */,
+				D61CCBF128FEC7510040CD90 /* Token.swift in Sources */,
 				D61CCBB028FEAEC90040CD90 /* HomeRouterProtocol.swift in Sources */,
 				D61CCB8928FEAA6F0040CD90 /* AppDelegate.swift in Sources */,
 				D61CCBA428FEAD360040CD90 /* HomeAssembly.swift in Sources */,
 				D61CCB8B28FEAA6F0040CD90 /* SceneDelegate.swift in Sources */,
+				D61CCBEA28FEC3D10040CD90 /* RootViewController.swift in Sources */,
 				D61CCBB628FEB8540040CD90 /* HomeView.swift in Sources */,
 				D61CCBAA28FEAE460040CD90 /* HomeViewProtocol.swift in Sources */,
 				D61CCBA828FEADA20040CD90 /* HomeViewController.swift in Sources */,

@@ -9,5 +9,11 @@ import Foundation
 
 /// Описание презентер модуля
 protocol HomePresenterProtocol: AnyObject {
-    
+
+	///  Отобразить полученные данные
+	/// - Parameter items: Полученные с сервера данные
+	func itemsDidFetch(items: [MenuEntity])
+
+	/// Отобразить ошибку получения данных с сервера
+	func fetchDidFail()
 }

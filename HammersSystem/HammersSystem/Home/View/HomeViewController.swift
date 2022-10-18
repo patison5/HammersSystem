@@ -22,6 +22,9 @@ final class HomeViewController: UIViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		setupViews()
+		setupConstraints()
+		homeView.fetch()
 	}
 }
 
@@ -29,4 +32,21 @@ final class HomeViewController: UIViewController {
 
 extension HomeViewController: HomeViewControllerProtocol {
 	
+}
+
+private extension HomeViewController {
+
+	func setupViews() {
+		view.addSubview(homeView)
+		homeView.translatesAutoresizingMaskIntoConstraints = false
+	}
+	
+	func setupConstraints() {
+		NSLayoutConstraint.activate([
+			homeView.topAnchor.constraint(equalTo: view.topAnchor),
+			homeView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+			homeView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+			homeView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+		])
+	}
 }
