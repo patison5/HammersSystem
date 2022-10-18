@@ -13,6 +13,7 @@ public enum Token: String {
 	case greyLight2
 	case redDark
 	case redLight
+	case redLight20
 	case background
 	case white
 }

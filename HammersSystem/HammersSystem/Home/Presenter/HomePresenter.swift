@@ -16,17 +16,31 @@ final class HomePresenter {
 
 extension HomePresenter: HomePresenterProtocol {
 
-	func itemsDidFetch(items: [MenuEntity]) {
-		var result: [MenuModel] = []
-		items.forEach {
-			result.append(MenuModel(
+	func modelDidFetch(model: [MenuEntity]) {
+		var items: [MenuModel] = []
+		model.forEach {
+			items.append(MenuModel(
 				image: UIImage(named: $0.image)!,
 				title: $0.title,
 				description: $0.description,
 				price: $0.price
 			))
 		}
-		view?.update(with: result)
+		let headerModel = HeaderModel(
+			currentTown: "Москва",
+			availableTowns: ["Москва"],
+			bannerImages: [
+				UIImage(named: "Banner1")!
+			],
+			categories: [
+				CategoryModel(title: "Пицца", isSelected: true),
+				CategoryModel(title: "Комбо"),
+				CategoryModel(title: "Десерты"),
+				CategoryModel(title: "Напитки")
+			]
+		)
+		let homeModel = HomeViewModel(items: items, headerModel: headerModel)
+		view?.update(with: homeModel)
 	}
 	
 	func fetchDidFail() {

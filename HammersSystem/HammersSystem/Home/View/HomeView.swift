@@ -16,9 +16,18 @@ final class HomeView: UIView {
 	let interactor: HomeInteractorProtocol
 
 	private let tableView: UITableView = {
-		let table = UITableView(frame: .zero, style: .insetGrouped)
+		let table = UITableView(frame: .zero, style: .plain)
 		table.backgroundColor = .clear
 		return table
+	}()
+
+	private let bottomSheetView = UIView()
+
+	private var bottomSheetTopConstraint = NSLayoutConstraint()
+
+	private let headerView: HomeHeaderView = {
+		let view = HomeHeaderView()
+		return view
 	}()
 
 	// MARK: - Init
@@ -35,6 +44,11 @@ final class HomeView: UIView {
 	required init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
+
+	override func layoutSubviews() {
+		super.layoutSubviews()
+		bottomSheetTopConstraint.constant = -tableView.contentOffset.y - 24
+	}
 }
 
 // MARK: - HomeViewProtocol
@@ -45,8 +59,9 @@ extension HomeView: HomeViewProtocol {
 		interactor.fetch()
 	}
 
-	func update(with state: [MenuModel]) {
-		data = state
+	func update(with model: HomeViewModel) {
+		headerView.configure(with: model.headerModel)
+		data = model.items
 		tableView.reloadData()
 	}
 }
@@ -72,41 +87,56 @@ extension HomeView: UITableViewDataSource {
 		customCell.configure(with: model)
 		return customCell
 	}
-
-	func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-		let headerView = HomeTableHeaderCell()
-		return headerView
-	}
 }
 
 // MARK: - UITableViewDelegate
 
 extension HomeView: UITableViewDelegate {
-	
+	func scrollViewDidScroll(_ scrollView: UIScrollView) {
+		bottomSheetTopConstraint.constant = -scrollView.contentOffset.y - 24
+	}
 }
+
+// MARK: - Private methods
 
 private extension HomeView {
 
 	func setupTable() {
 		tableView.register(MenuCell.self, forCellReuseIdentifier: MenuCell.identifier)
-		tableView.register(HomeTableHeaderCell.self, forHeaderFooterViewReuseIdentifier: HomeTableHeaderCell.identifier)
 		tableView.delegate = self
 		tableView.dataSource = self
+
+		tableView.contentInset = UIEdgeInsets(top: 280, left: 0, bottom: safeAreaInsets.bottom, right: 0)
+		tableView.contentOffset = .init(x: 0, y: -280)
 	}
 
 	func setupViews() {
-		[tableView].forEach {
+		bottomSheetView.backgroundColor = .white
+		bottomSheetView.layer.cornerRadius = 16
+		bottomSheetView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+		[bottomSheetView, tableView, headerView].forEach {
 			addSubview($0)
 			$0.translatesAutoresizingMaskIntoConstraints = false
 		}
 	}
 
 	func setupContraints() {
+		bottomSheetTopConstraint = bottomSheetView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor)
+		
 		NSLayoutConstraint.activate([
+			headerView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+			headerView.leadingAnchor.constraint(equalTo: leadingAnchor),
+			headerView.trailingAnchor.constraint(equalTo: trailingAnchor),
+
 			tableView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-			tableView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
-			tableView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
-			tableView.bottomAnchor.constraint(equalTo: bottomAnchor)
+			tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
+			tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
+			tableView.bottomAnchor.constraint(equalTo: bottomAnchor),
+			
+			bottomSheetTopConstraint,
+			bottomSheetView.leadingAnchor.constraint(equalTo: leadingAnchor),
+			bottomSheetView.trailingAnchor.constraint(equalTo: trailingAnchor),
+			bottomSheetView.bottomAnchor.constraint(equalTo: bottomAnchor)
 		])
 	}
 }

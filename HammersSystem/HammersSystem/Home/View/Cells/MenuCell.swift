@@ -104,6 +104,8 @@ final class MenuCell: UITableViewCell {
 private extension MenuCell {
 
 	func setupViews() {
+		backgroundColor = .clear
+		contentView.backgroundColor = .clear
 		[imgView, titleView, descriptionView, buttonView].forEach {
 			contentView.addSubview($0)
 			$0.translatesAutoresizingMaskIntoConstraints = false
@@ -128,7 +130,7 @@ private extension MenuCell {
 
 			buttonView.topAnchor.constraint(equalTo: descriptionView.bottomAnchor, constant: Constants.descriptionBottomMargin),
 			buttonView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Constants.rightMargin),
-			buttonView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -Constants.bottomMargin)
+			buttonView.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -Constants.bottomMargin)
 		])
 	}
 }

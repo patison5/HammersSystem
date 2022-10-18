@@ -15,5 +15,5 @@ protocol HomeViewProtocol where Self: UIView {
 
 	/// Обновить вью с новыми данными
 	/// - state: Полученные данные
-	func update(with state: [MenuModel])
+	func update(with state: HomeViewModel)
 }

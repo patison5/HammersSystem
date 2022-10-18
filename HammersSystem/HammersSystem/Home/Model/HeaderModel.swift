@@ -9,9 +9,20 @@ import UIKit
 
 struct HeaderModel {
 
-	let currentTown: String = "Москва"
+	var currentTown: String = "Москва"
 
-	let bannerImages: [UIImage]
+	var availableTowns: [String] = []
 
-	let categories: [String] = ["Пицца", "Комбо", "Десерты", "Напитки"]
+	var bannerImages: [UIImage] = []
+
+	var categories: [CategoryModel] = []
+}
+
+struct CategoryModel {
+
+	/// Название категогрии
+	let title: String
+
+	/// Состоание выбора
+	var isSelected: Bool = false
 }

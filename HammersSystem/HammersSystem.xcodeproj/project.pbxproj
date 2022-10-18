@@ -26,8 +26,13 @@
 		D61CCBF128FEC7510040CD90 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61CCBF028FEC7510040CD90 /* Token.swift */; };
 		D61CCBF328FECA2F0040CD90 /* MenuEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61CCBF228FECA2F0040CD90 /* MenuEntity.swift */; };
 		D629D85B28FED8F30055F3D9 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D629D85A28FED8F30055F3D9 /* MenuCell.swift */; };
-		D629D85D28FED9030055F3D9 /* HomeTableHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D629D85C28FED9030055F3D9 /* HomeTableHeaderCell.swift */; };
+		D629D85D28FED9030055F3D9 /* HomeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D629D85C28FED9030055F3D9 /* HomeHeaderView.swift */; };
 		D629D85F28FEF5240055F3D9 /* HeaderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D629D85E28FEF5240055F3D9 /* HeaderModel.swift */; };
+		D667FEB428FF09B5008278E3 /* Icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = D667FEB328FF09B5008278E3 /* Icon.swift */; };
+		D667FEB728FF2797008278E3 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D667FEB628FF2797008278E3 /* HomeViewModel.swift */; };
+		D667FEB928FF2B7D008278E3 /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D667FEB828FF2B7D008278E3 /* BannerView.swift */; };
+		D667FEBB28FF2C4D008278E3 /* CategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D667FEBA28FF2C4D008278E3 /* CategoriesView.swift */; };
+		D667FEBD28FF309C008278E3 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D667FEBC28FF309C008278E3 /* ActionButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,8 +57,13 @@
 		D61CCBF028FEC7510040CD90 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		D61CCBF228FECA2F0040CD90 /* MenuEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuEntity.swift; sourceTree = "<group>"; };
 		D629D85A28FED8F30055F3D9 /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
-		D629D85C28FED9030055F3D9 /* HomeTableHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableHeaderCell.swift; sourceTree = "<group>"; };
+		D629D85C28FED9030055F3D9 /* HomeHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderView.swift; sourceTree = "<group>"; };
 		D629D85E28FEF5240055F3D9 /* HeaderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderModel.swift; sourceTree = "<group>"; };
+		D667FEB328FF09B5008278E3 /* Icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Icon.swift; sourceTree = "<group>"; };
+		D667FEB628FF2797008278E3 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		D667FEB828FF2B7D008278E3 /* BannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerView.swift; sourceTree = "<group>"; };
+		D667FEBA28FF2C4D008278E3 /* CategoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesView.swift; sourceTree = "<group>"; };
+		D667FEBC28FF309C008278E3 /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +127,7 @@
 		D61CCB9D28FEAC2D0040CD90 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D667FEB528FF1C78008278E3 /* Views */,
 				D61CCBF728FED39B0040CD90 /* Cells */,
 				D61CCBA728FEADA20040CD90 /* HomeViewController.swift */,
 				D61CCBB728FEB8AC0040CD90 /* HomeViewControllerProtocol.swift */,
@@ -155,6 +166,7 @@
 		D61CCBA128FEAC780040CD90 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D667FEB628FF2797008278E3 /* HomeViewModel.swift */,
 				D61CCBED28FEC67A0040CD90 /* MenuModel.swift */,
 				D629D85E28FEF5240055F3D9 /* HeaderModel.swift */,
 			);
@@ -173,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				D61CCBF028FEC7510040CD90 /* Token.swift */,
+				D667FEB328FF09B5008278E3 /* Icon.swift */,
 			);
 			path = DesignSystem;
 			sourceTree = "<group>";
@@ -188,9 +201,19 @@
 			isa = PBXGroup;
 			children = (
 				D629D85A28FED8F30055F3D9 /* MenuCell.swift */,
-				D629D85C28FED9030055F3D9 /* HomeTableHeaderCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		D667FEB528FF1C78008278E3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D629D85C28FED9030055F3D9 /* HomeHeaderView.swift */,
+				D667FEB828FF2B7D008278E3 /* BannerView.swift */,
+				D667FEBA28FF2C4D008278E3 /* CategoriesView.swift */,
+				D667FEBC28FF309C008278E3 /* ActionButton.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,16 +286,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				D61CCBF328FECA2F0040CD90 /* MenuEntity.swift in Sources */,
+				D667FEB728FF2797008278E3 /* HomeViewModel.swift in Sources */,
 				D61CCBAC28FEAE890040CD90 /* HomeInteractorProtocol.swift in Sources */,
 				D629D85B28FED8F30055F3D9 /* MenuCell.swift in Sources */,
 				D61CCBB228FEB4EC0040CD90 /* HomeInteractor.swift in Sources */,
 				D61CCBEE28FEC67A0040CD90 /* MenuModel.swift in Sources */,
 				D61CCBB828FEB8AC0040CD90 /* HomeViewControllerProtocol.swift in Sources */,
 				D61CCB8D28FEAA6F0040CD90 /* ViewController.swift in Sources */,
+				D667FEBB28FF2C4D008278E3 /* CategoriesView.swift in Sources */,
 				D61CCBB428FEB4F40040CD90 /* HomePresenter.swift in Sources */,
-				D629D85D28FED9030055F3D9 /* HomeTableHeaderCell.swift in Sources */,
+				D629D85D28FED9030055F3D9 /* HomeHeaderView.swift in Sources */,
+				D667FEB428FF09B5008278E3 /* Icon.swift in Sources */,
 				D61CCBAE28FEAE960040CD90 /* HomePresenterProtocol.swift in Sources */,
 				D61CCBF128FEC7510040CD90 /* Token.swift in Sources */,
+				D667FEB928FF2B7D008278E3 /* BannerView.swift in Sources */,
 				D61CCBB028FEAEC90040CD90 /* HomeRouterProtocol.swift in Sources */,
 				D61CCB8928FEAA6F0040CD90 /* AppDelegate.swift in Sources */,
 				D61CCBA428FEAD360040CD90 /* HomeAssembly.swift in Sources */,
@@ -282,6 +309,7 @@
 				D61CCBB628FEB8540040CD90 /* HomeView.swift in Sources */,
 				D61CCBAA28FEAE460040CD90 /* HomeViewProtocol.swift in Sources */,
 				D61CCBA828FEADA20040CD90 /* HomeViewController.swift in Sources */,
+				D667FEBD28FF309C008278E3 /* ActionButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

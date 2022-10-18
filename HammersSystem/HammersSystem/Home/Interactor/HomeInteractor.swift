@@ -120,6 +120,6 @@ final class HomeInteractor {
 extension HomeInteractor: HomeInteractorProtocol {
 
 	func fetch() {
-		presenter.itemsDidFetch(items: data)
+		presenter.modelDidFetch(model: data)
 	}
 }

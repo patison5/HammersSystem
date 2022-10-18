@@ -25,6 +25,7 @@ final class HomeViewController: UIViewController {
 		setupViews()
 		setupConstraints()
 		homeView.fetch()
+		navigationController?.isNavigationBarHidden = true
 	}
 }
 
@@ -38,7 +39,7 @@ private extension HomeViewController {
 		view.addSubview(homeView)
 		homeView.translatesAutoresizingMaskIntoConstraints = false
 	}
-	
+
 	func setupConstraints() {
 		NSLayoutConstraint.activate([
 			homeView.topAnchor.constraint(equalTo: view.topAnchor),
