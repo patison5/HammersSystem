@@ -18,10 +18,16 @@ final class HomeHeaderView: UIView {
 		static let bannerHeight: CGFloat = 112.0
 	}
 
+	// MARK: - Public Properties
+
+	var categorySelectedAction: ((CategoryModel) -> Void)?
+
 	// MARK: - Private properties
 
 	private let categoriesView = CategoriesView()
 	private let bannerView = BannerView()
+	private var bannerViewHeightConstraint: NSLayoutConstraint?
+	private var bannerViewTopOffsetConstraint: NSLayoutConstraint?
 
 	private let townSelectBottonView: UIButton = {
 		var configuration = UIButton.Configuration.plain()
@@ -58,6 +64,17 @@ final class HomeHeaderView: UIView {
 		townSelectBottonView.setTitle(model.currentTown, for: .normal)
 		categoriesView.configure(with: model.categories)
 		bannerView.configure(widh: model.bannerImages)
+
+		categoriesView.categorySelectedAction = { [weak self] categoryModel in
+			self?.categorySelectedAction?(categoryModel)
+		}
+	}
+
+	func scrollViewDidScroll(offset: CGFloat) {
+		let value = max(0, min(-offset-112, 112))
+		let marginValue = max(0, min(-offset-112+24, 24))
+		bannerViewHeightConstraint?.constant = value
+		bannerViewTopOffsetConstraint?.constant = marginValue
 	}
 }
 
@@ -75,15 +92,35 @@ private extension HomeHeaderView {
 			townSelectBottonView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16),
 			townSelectBottonView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.leadingTownSelectionButtonMargin),
 
-			bannerView.topAnchor.constraint(equalTo: townSelectBottonView.bottomAnchor, constant: Constants.sectionsMargin),
-			bannerView.heightAnchor.constraint(equalToConstant: Constants.bannerHeight),
 			bannerView.leadingAnchor.constraint(equalTo: leadingAnchor),
 			bannerView.trailingAnchor.constraint(equalTo: trailingAnchor),
 
 			categoriesView.topAnchor.constraint(equalTo: bannerView.bottomAnchor, constant: Constants.sectionsMargin),
-			categoriesView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.sectionsMargin),
+			categoriesView.leadingAnchor.constraint(equalTo: leadingAnchor),
 			categoriesView.trailingAnchor.constraint(equalTo: trailingAnchor),
 			categoriesView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Constants.sectionsMargin)
 		])
+
+		bannerViewTopOffsetConstraint = bannerView.topAnchor.constraint(
+			equalTo: townSelectBottonView.bottomAnchor,
+			constant: Constants.sectionsMargin
+		)
+		bannerViewTopOffsetConstraint?.isActive = true
+		bannerViewHeightConstraint = bannerView.heightAnchor.constraint(equalToConstant: 0)
+		bannerViewHeightConstraint?.isActive = true
+	}
+	
+	func showBannerView() {
+		UIView.animate(withDuration: 0.25) {
+			self.bannerViewHeightConstraint?.constant = Constants.bannerHeight
+			self.bannerViewTopOffsetConstraint?.constant = Constants.sectionsMargin
+		}
+	}
+
+	func hideBannerView() {
+		UIView.animate(withDuration: 0.25) {
+			self.bannerViewHeightConstraint?.constant = 0
+			self.bannerViewTopOffsetConstraint?.constant = 0
+		}
 	}
 }

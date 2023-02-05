@@ -9,11 +9,15 @@ import Foundation
 
 struct MenuEntity {
 
+	/// Ссылка на картинку
 	let image: String
 
+	/// Заголовок
 	let title: String
 
+	/// Описание
 	let description: String
 
+	/// Цена
 	let price: Int
 }

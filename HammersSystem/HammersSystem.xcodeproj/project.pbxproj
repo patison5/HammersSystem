@@ -35,6 +35,8 @@
 		D6D81A84298FD71D00784A6B /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D81A83298FD71D00784A6B /* BannerView.swift */; };
 		D6D81A87298FD76E00784A6B /* BannerViewTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D81A86298FD76E00784A6B /* BannerViewTableCell.swift */; };
 		D6D81A89298FD79E00784A6B /* BannerViewCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D81A88298FD79E00784A6B /* BannerViewCollectionCell.swift */; };
+		D6D81A8B299173F700784A6B /* HeaderEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D81A8A299173F700784A6B /* HeaderEntity.swift */; };
+		D6D81A8D299189F200784A6B /* HomeEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6D81A8C299189F200784A6B /* HomeEntity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +70,8 @@
 		D6D81A83298FD71D00784A6B /* BannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerView.swift; sourceTree = "<group>"; };
 		D6D81A86298FD76E00784A6B /* BannerViewTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerViewTableCell.swift; sourceTree = "<group>"; };
 		D6D81A88298FD79E00784A6B /* BannerViewCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerViewCollectionCell.swift; sourceTree = "<group>"; };
+		D6D81A8A299173F700784A6B /* HeaderEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderEntity.swift; sourceTree = "<group>"; };
+		D6D81A8C299189F200784A6B /* HomeEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeEntity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,7 +166,9 @@
 		D61CCBA028FEAC730040CD90 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				D6D81A8C299189F200784A6B /* HomeEntity.swift */,
 				D61CCBF228FECA2F0040CD90 /* MenuEntity.swift */,
+				D6D81A8A299173F700784A6B /* HeaderEntity.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -316,6 +322,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D6D81A84298FD71D00784A6B /* BannerView.swift in Sources */,
+				D6D81A8D299189F200784A6B /* HomeEntity.swift in Sources */,
 				D61CCBF328FECA2F0040CD90 /* MenuEntity.swift in Sources */,
 				D667FEB728FF2797008278E3 /* HomeViewModel.swift in Sources */,
 				D61CCBAC28FEAE890040CD90 /* HomeInteractorProtocol.swift in Sources */,
@@ -326,6 +333,7 @@
 				D61CCB8D28FEAA6F0040CD90 /* ViewController.swift in Sources */,
 				D6D81A87298FD76E00784A6B /* BannerViewTableCell.swift in Sources */,
 				D667FEBB28FF2C4D008278E3 /* CategoriesView.swift in Sources */,
+				D6D81A8B299173F700784A6B /* HeaderEntity.swift in Sources */,
 				D61CCBB428FEB4F40040CD90 /* HomePresenter.swift in Sources */,
 				D629D85D28FED9030055F3D9 /* HomeHeaderView.swift in Sources */,
 				D667FEB428FF09B5008278E3 /* Icon.swift in Sources */,

@@ -90,10 +90,10 @@ private extension BannerView {
 
 	func setupConstraints() {
 		NSLayoutConstraint.activate([
-			tableView.heightAnchor.constraint(equalToConstant: Constants.height),
+			tableView.topAnchor.constraint(equalTo: topAnchor),
 			tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
 			tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
-			tableView.centerYAnchor.constraint(equalTo: centerYAnchor)
+			tableView.bottomAnchor.constraint(equalTo: bottomAnchor)
 		])
 	}
 }

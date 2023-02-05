@@ -12,4 +12,8 @@ protocol HomeInteractorProtocol: AnyObject {
 
 	/// Получить данные с сервера
 	func fetch()
+
+	/// Обновить состояние фильтра после выбора категории
+	/// - Parameter category: Выбранная категория
+	func categoryDidSelect(category: CategoryModel)
 }

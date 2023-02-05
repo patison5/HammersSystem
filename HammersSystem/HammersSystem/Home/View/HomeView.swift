@@ -31,8 +31,11 @@ final class HomeView: UIView {
 
 	private var bottomSheetTopConstraint = NSLayoutConstraint()
 
-	private let headerView: HomeHeaderView = {
+	private lazy var headerView: HomeHeaderView = {
 		let view = HomeHeaderView()
+		view.categorySelectedAction = { [weak self] categoryModel in
+			self?.interactor.categoryDidSelect(category: categoryModel)
+		}
 		return view
 	}()
 
@@ -100,6 +103,7 @@ extension HomeView: UITableViewDataSource {
 extension HomeView: UITableViewDelegate {
 	func scrollViewDidScroll(_ scrollView: UIScrollView) {
 		bottomSheetTopConstraint.constant = -scrollView.contentOffset.y - 24
+		headerView.scrollViewDidScroll(offset: scrollView.contentOffset.y)
 	}
 }
 
@@ -114,6 +118,7 @@ private extension HomeView {
 
 		tableView.contentInset = UIEdgeInsets(top: Constants.headerHeight, left: 0, bottom: safeAreaInsets.bottom, right: 0)
 		tableView.contentOffset = .init(x: 0, y: -Constants.headerHeight)
+		tableView.showsVerticalScrollIndicator = false
 	}
 
 	func setupViews() {
@@ -128,7 +133,7 @@ private extension HomeView {
 
 	func setupContraints() {
 		bottomSheetTopConstraint = bottomSheetView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor)
-		
+
 		NSLayoutConstraint.activate([
 			headerView.topAnchor.constraint(equalTo: topAnchor),
 			headerView.leadingAnchor.constraint(equalTo: leadingAnchor),

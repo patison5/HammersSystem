@@ -9,7 +9,7 @@ import Foundation
 
 final class HomeInteractor {
 
-	let data: [MenuEntity] = [
+	private let menuData: [MenuEntity] = [
 		MenuEntity(
 			image: "Image1",
 			title: "Ветчина и грибы",
@@ -108,7 +108,18 @@ final class HomeInteractor {
 		)
 	]
 
-	let presenter: HomePresenterProtocol
+	private var headerData = HeaderEntity(
+		selectedTown: "Москва",
+		availableTowns: ["Москва", "Мурманск"],
+		bannerImages: ["imagePreview", "imagePreview"],
+		categories: [
+			CategoryEntity(title: "Пицца", isSelected: true),
+			CategoryEntity(title: "Комбо", isSelected: false),
+			CategoryEntity(title: "Десерты", isSelected: false),
+			CategoryEntity(title: "Напитки", isSelected: false)
+		])
+
+	private let presenter: HomePresenterProtocol
 
 	init(presenter: HomePresenterProtocol) {
 		self.presenter = presenter
@@ -120,6 +131,24 @@ final class HomeInteractor {
 extension HomeInteractor: HomeInteractorProtocol {
 
 	func fetch() {
-		presenter.modelDidFetch(model: data)
+		DispatchQueue.global().asyncAfter(deadline: .now() + 0.0) { [weak self] in
+			DispatchQueue.main.async {
+				guard let self = self else { return }
+				let homeEntity = HomeEntity(items: self.menuData, header: self.headerData)
+				self.presenter.modelDidFetch(entity: homeEntity)
+			}
+		}
+	}
+
+	func categoryDidSelect(category categoryModel: CategoryModel) {
+		for (idx, categoryEntity) in headerData.categories.enumerated() {
+			if (categoryEntity.title == categoryModel.title) {
+				headerData.categories[idx].isSelected = true
+			} else {
+				headerData.categories[idx].isSelected = false
+			}
+		}
+		let homeEntity = HomeEntity(items: self.menuData, header: self.headerData)
+		self.presenter.modelDidFetch(entity: homeEntity)
 	}
 }

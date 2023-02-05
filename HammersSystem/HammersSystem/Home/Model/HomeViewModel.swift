@@ -9,7 +9,7 @@ import Foundation
 
 struct HomeViewModel {
 
-	let items: [MenuModel]
+	var items: [MenuModel] = []
 
-	let headerModel: HeaderModel
+	var headerModel: HeaderModel
 }

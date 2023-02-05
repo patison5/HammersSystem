@@ -9,6 +9,8 @@ import UIKit
 
 final class CategoriesView: UIView {
 
+	var categorySelectedAction: ((CategoryModel) -> Void)?
+
 	// MARK: - Private properties
 
 	class Constants {
@@ -27,6 +29,7 @@ final class CategoriesView: UIView {
 	private let horisontalScrollView: UIScrollView = {
 		let view = UIScrollView()
 		view.showsHorizontalScrollIndicator = false
+		view.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 0)
 		return view
 	}()
 
@@ -43,9 +46,14 @@ final class CategoriesView: UIView {
 	}
 
 	func configure(with model: [CategoryModel]) {
+		stackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
 		model.forEach {
 			let button = buttonView
-			button.setTitle($0.title, for: .normal)
+			let buttonModel = $0
+			button.setTitle(buttonModel.title, for: .normal)
+			button.touchUpInside = { [buttonModel, weak self] _ in
+				self?.categorySelectedAction?(buttonModel)
+			}
 			stackView.addArrangedSubview(button)
 			if $0.isSelected {
 				button.setTitleColor(Token.redDark.color, for: .normal)

@@ -9,17 +9,10 @@ import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
-    var window: UIWindow?
+	var window: UIWindow?
 
 	func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
 		guard let windowScene = (scene as? UIWindowScene) else { return }
-
-		let icons = [
-			("iconBurgerInActive", "iconBurgerActive"),
-			("iconMarkerInActive", "iconMarkerActive"),
-			("iconPersonInActive", "iconPersonActive"),
-			("iconBucketInActive", "iconBucketActive")
-		]
 
 		let vc1 = UINavigationController(rootViewController: HomeAssembly.controller())
 		let vc2 = UINavigationController(rootViewController: HomeAssembly.controller())
@@ -36,7 +29,34 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 		tabBarVC.tabBar.backgroundColor = Token.white.color
 		tabBarVC.tabBar.isTranslucent = false
 
-		if let items = tabBarVC.tabBar.items {
+		setupTabBarShadow(tabBar: tabBarVC.tabBar)
+		setupTabBarItems(tabBar: tabBarVC.tabBar)
+
+		window = UIWindow(windowScene: windowScene)
+		window?.rootViewController = tabBarVC
+		window?.makeKeyAndVisible()
+	}
+}
+
+private extension SceneDelegate {
+
+	func setupTabBarShadow(tabBar: UITabBar) {
+		tabBar.layer.masksToBounds = false
+		tabBar.layer.shadowColor = UIColor.black.withAlphaComponent(0.2).cgColor
+		tabBar.layer.shadowOffset = CGSize(width: -4, height: -6)
+		tabBar.layer.shadowOpacity = 0.5
+		tabBar.layer.shadowRadius = 20
+	}
+
+	func setupTabBarItems(tabBar: UITabBar) {
+		let icons = [
+			("iconBurgerInActive", "iconBurgerActive"),
+			("iconMarkerInActive", "iconMarkerActive"),
+			("iconPersonInActive", "iconPersonActive"),
+			("iconBucketInActive", "iconBucketActive")
+		]
+
+		if let items = tabBar.items {
 			for i in 0..<items.count {
 				items[i].setTitleTextAttributes([
 					NSAttributedString.Key.foregroundColor: Token.redDark.color
@@ -45,10 +65,5 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 				items[i].selectedImage = UIImage(named: icons[i].1)?.withRenderingMode(.alwaysOriginal)
 			}
 		}
-
-		window = UIWindow(windowScene: windowScene)
-		window?.rootViewController = tabBarVC
-		window?.makeKeyAndVisible()
 	}
 }
-

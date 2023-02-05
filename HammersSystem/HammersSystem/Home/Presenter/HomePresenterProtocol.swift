@@ -12,7 +12,7 @@ protocol HomePresenterProtocol: AnyObject {
 
 	///  Отобразить полученные данные
 	/// - Parameter items: Полученные с сервера данные
-	func modelDidFetch(model: [MenuEntity])
+	func modelDidFetch(entity: HomeEntity)
 
 	/// Отобразить ошибку получения данных с сервера
 	func fetchDidFail()
