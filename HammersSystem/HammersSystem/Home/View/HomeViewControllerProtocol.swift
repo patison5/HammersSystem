@@ -10,5 +10,6 @@ import UIKit
 /// Описание контроллера главного экрана
 protocol HomeViewControllerProtocol: UIViewController {
 
+	/// Вью главного экрана
 	var homeView: HomeViewProtocol { get }
 }

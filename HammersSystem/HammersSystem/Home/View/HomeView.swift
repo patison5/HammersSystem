@@ -9,11 +9,17 @@ import UIKit
 
 final class HomeView: UIView {
 
-	// MARK: - Private properties
+	// MARK: - Public properties
 
 	var data: [MenuModel] = []
 
 	let interactor: HomeInteractorProtocol
+
+	// MARK: - Private properties
+
+	private class Constants {
+		static let headerHeight: CGFloat = 280
+	}
 
 	private let tableView: UITableView = {
 		let table = UITableView(frame: .zero, style: .plain)
@@ -106,8 +112,8 @@ private extension HomeView {
 		tableView.delegate = self
 		tableView.dataSource = self
 
-		tableView.contentInset = UIEdgeInsets(top: 280, left: 0, bottom: safeAreaInsets.bottom, right: 0)
-		tableView.contentOffset = .init(x: 0, y: -280)
+		tableView.contentInset = UIEdgeInsets(top: Constants.headerHeight, left: 0, bottom: safeAreaInsets.bottom, right: 0)
+		tableView.contentOffset = .init(x: 0, y: -Constants.headerHeight)
 	}
 
 	func setupViews() {
@@ -124,7 +130,7 @@ private extension HomeView {
 		bottomSheetTopConstraint = bottomSheetView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor)
 		
 		NSLayoutConstraint.activate([
-			headerView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+			headerView.topAnchor.constraint(equalTo: topAnchor),
 			headerView.leadingAnchor.constraint(equalTo: leadingAnchor),
 			headerView.trailingAnchor.constraint(equalTo: trailingAnchor),
 

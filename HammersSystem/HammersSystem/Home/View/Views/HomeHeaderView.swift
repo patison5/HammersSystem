@@ -9,25 +9,19 @@ import UIKit
 
 final class HomeHeaderView: UIView {
 
-	// MARK: - Public properties
+	// MARK: - Constants
+
+	private class Constants {
+		static let townSelectFontSize: CGFloat = 17.0
+		static let sectionsMargin: CGFloat = 24.0
+		static let leadingTownSelectionButtonMargin: CGFloat = 16.0
+		static let bannerHeight: CGFloat = 112.0
+	}
 
 	// MARK: - Private properties
 
-	class Constants {
-		static let townSelectFontSize: CGFloat = 17.0
-		static let sectionsMargin: CGFloat = 24.0
-	}
-
 	private let categoriesView = CategoriesView()
 	private let bannerView = BannerView()
-
-	private let stackView: UIStackView = {
-		let view = UIStackView()
-		view.axis = .vertical
-		view.alignment = .leading
-		view.distribution = .fill
-		return view
-	}()
 
 	private let townSelectBottonView: UIButton = {
 		var configuration = UIButton.Configuration.plain()
@@ -51,6 +45,7 @@ final class HomeHeaderView: UIView {
 		super.init(frame: .zero)
 		setupViews()
 		setupContraints()
+		backgroundColor = Token.background.color
 	}
 
 	required init?(coder: NSCoder) {
@@ -62,6 +57,7 @@ final class HomeHeaderView: UIView {
 	func configure(with model: HeaderModel) {
 		townSelectBottonView.setTitle(model.currentTown, for: .normal)
 		categoriesView.configure(with: model.categories)
+		bannerView.configure(widh: model.bannerImages)
 	}
 }
 
@@ -76,17 +72,18 @@ private extension HomeHeaderView {
 
 	func setupContraints() {
 		NSLayoutConstraint.activate([
-			townSelectBottonView.topAnchor.constraint(equalTo: topAnchor),
-			townSelectBottonView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+			townSelectBottonView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16),
+			townSelectBottonView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.leadingTownSelectionButtonMargin),
 
 			bannerView.topAnchor.constraint(equalTo: townSelectBottonView.bottomAnchor, constant: Constants.sectionsMargin),
-			bannerView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+			bannerView.heightAnchor.constraint(equalToConstant: Constants.bannerHeight),
+			bannerView.leadingAnchor.constraint(equalTo: leadingAnchor),
 			bannerView.trailingAnchor.constraint(equalTo: trailingAnchor),
 
 			categoriesView.topAnchor.constraint(equalTo: bannerView.bottomAnchor, constant: Constants.sectionsMargin),
-			categoriesView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+			categoriesView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.sectionsMargin),
 			categoriesView.trailingAnchor.constraint(equalTo: trailingAnchor),
-			categoriesView.bottomAnchor.constraint(equalTo: bottomAnchor)
+			categoriesView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Constants.sectionsMargin)
 		])
 	}
 }

@@ -30,7 +30,9 @@ extension HomePresenter: HomePresenterProtocol {
 			currentTown: "Москва",
 			availableTowns: ["Москва"],
 			bannerImages: [
-				UIImage(named: "Banner1")!
+				UIImage(named: "imagePreview")!,
+				UIImage(named: "imagePreview")!,
+				UIImage(named: "imagePreview")!
 			],
 			categories: [
 				CategoryModel(title: "Пицца", isSelected: true),

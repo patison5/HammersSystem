@@ -11,6 +11,10 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+//		UITabBar.appearance().tintColor = Token.redDark.color
+//		UITabBar.appearance().barTintColor = Token.redDark.color
+//		UITabBar.appearance().selectedItem?.badgeColor = Token.redDark.color
+//		UITabBar.appearance().unselectedItemTintColor = Token.greyLight2.color
         return true
     }
 
